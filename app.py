@@ -29,37 +29,31 @@ def extract_colors(input_img, k):
         palette[:, i*100:(i+1)*100] = color
     return segmented_image, palette, f"Extracted {k} colors: {colors.tolist()}"
 
-with gr.Blocks(title="🎨 K-means clustering for t-shirt designs") as demo:
-    gr.Markdown("# 🎨 K-means clustering for t-shirt designs")
+css = ".narrow { max-width: 350px !important; }"
+
+with gr.Blocks(css=css, title="🎨 K-means clustering - Extract dominant colors") as demo:
+    gr.Markdown("# 🎨 K-means clustering - Extract dominant colors")
     
     with gr.Row():
         with gr.Column():
             input_img = gr.Image(type="pil", label="Upload Image")
-            k_slider = gr.Slider(minimum=2, maximum=6, step=1, value=4, label="Number of Colors (k)")
-            with gr.Row():
-                clear_btn = gr.Button("Clear")
-                submit_btn = gr.Button("Submit", variant="primary")
-            
-            # We create a placeholder for the examples that will be populated after output components are defined
+            k_radio = gr.Radio(choices=[2, 3, 4, 5, 6], value=4, label="Number of Colors (k)")
+            submit_btn = gr.Button("Submit", variant="primary")
+
             example_container = gr.Column()
-            
+
         with gr.Column():
             out_seg = gr.Image(label="Image w dominant colors")
             out_pal = gr.Image(label="Colors extracted")
             out_text = gr.Textbox(label="RGB values")
 
-    # Now that out_seg, out_pal, and out_text exist, we define the examples inside the container
     with example_container:
         gr.Examples(
-            examples=[["artist.jpeg", 4], ["cat.jpg", 4], ["quote.jpeg", 4], ["skull.jpg", 4], ["woman.jpeg", 4]],
-            inputs=[input_img, k_slider],
-            outputs=[out_seg, out_pal, out_text],
-            fn=extract_colors,
+            examples=[["artist.jpeg"], ["cat.jpg"], ["quote.jpeg"], ["skull.jpg"], ["woman.jpeg"]],
+            inputs=[input_img],
             label=None,
-            run_on_click=True
         )
 
-    submit_btn.click(fn=extract_colors, inputs=[input_img, k_slider], outputs=[out_seg, out_pal, out_text])
-    clear_btn.click(lambda: [None, None, None, 5], None, [input_img, out_seg, out_pal, k_slider])
+    submit_btn.click(fn=extract_colors, inputs=[input_img, k_radio], outputs=[out_seg, out_pal, out_text])
 
 demo.launch(share=True)
