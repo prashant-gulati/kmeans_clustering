@@ -51,7 +51,7 @@ with gr.Blocks(title="🎨 K-means clustering for t-shirt designs") as demo:
     # Now that out_seg, out_pal, and out_text exist, we define the examples inside the container
     with example_container:
         gr.Examples(
-            examples=[["artist.jpeg"], ["cat.jpg"], ["quote.jpeg"], ["skull.jpg"], ["woman.jpeg"]],
+            examples=[["artist.jpeg", 4], ["cat.jpg", 4], ["quote.jpeg", 4], ["skull.jpg", 4], ["woman.jpeg", 4]],
             inputs=[input_img, k_slider],
             outputs=[out_seg, out_pal, out_text],
             fn=extract_colors,
