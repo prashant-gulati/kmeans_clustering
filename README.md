@@ -12,7 +12,6 @@ short_description: K-means clustering
 
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
 
---
 Colab version: https://colab.research.google.com/drive/1fyhpMLgGKGxU5WwfvgLgJ0edsWlrUn7q#scrollTo=0a3c9adc
 
 HF space: https://huggingface.co/spaces/prashant-gulati/kmeans_clustering
