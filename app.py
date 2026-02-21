@@ -32,7 +32,7 @@ def extract_colors(input_img, k):
     # Reshape it back into the original height, width, and color channels of your image so it can be displayed as a picture.
     segmented_image = colors[labels].reshape(original_shape)
 
-    #
+    # Build the color palette
     palette = np.zeros((100, k * 100, 3), dtype=np.uint8)
     
     for i, color in enumerate(colors):
