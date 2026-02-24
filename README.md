@@ -1,3 +1,15 @@
+---
+title: Kmeans Clustering
+emoji: 🎨
+colorFrom: blue
+colorTo: red
+sdk: gradio
+sdk_version: "6.6.0"
+python_version: "3.11"
+app_file: app.py
+pinned: false
+---
+
 # K-Means Color Extractor
 
 Extract the dominant colors from any image using the K-Means clustering algorithm. Upload a photo, pick how many colors you want, and get back a segmented image, a color palette, and the raw RGB values.
