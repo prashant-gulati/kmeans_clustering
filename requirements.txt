@@ -1,4 +1,4 @@
-gradio>=5.0,<6
+gradio
 numpy
 pillow
 scikit-learn
