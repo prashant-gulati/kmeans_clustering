@@ -65,4 +65,4 @@ with gr.Blocks(title="🎨 K-means clustering - Extract dominant colors") as dem
 
     submit_btn.click(fn=extract_colors, inputs=[input_img, k_radio], outputs=[out_seg, out_pal, out_text])
 
-demo.launch()
+demo.launch(server_name="0.0.0.0", ssr_mode=False)
